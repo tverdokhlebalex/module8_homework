@@ -1,5 +1,5 @@
 {
     "CodeGPT.query.language": "Russian",
-    "CodeGPT.temperature": 0.1,
+    "CodeGPT.temperature": 0.5,
     "liveServer.settings.port": 5501
 }
