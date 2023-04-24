@@ -1,24 +1,32 @@
-const input = document.getElementById('number');
-const btn = document.getElementById('btn');
-const output = document.querySelector('.output');
+document.addEventListener("DOMContentLoaded", function () {
+  const submitBtn = document.getElementById("submitBtn");
+  const result = document.getElementById("result");
+  const input1 = document.getElementById("number1");
+  const input2 = document.getElementById("number2");
 
-btn.addEventListener('click', () => {
-  const inputValue = parseInt(input.value);
-  if (isNaN(inputValue)) {
-    output.innerHTML = '<p class="error">Ошибка: введите число</p>';
-    return;
-  }
-  if (inputValue < 1 || inputValue > 10) {
-    output.innerHTML = '<p class="error">Ошибка: число должно быть от 1 до 10</p>';
-    return;
-  }
-  
-  output.innerHTML = '';
+  submitBtn.addEventListener("click", function () {
+    const num1 = parseInt(input1.value);
+    const num2 = parseInt(input2.value);
 
-  for (let i = 1; i <= inputValue; i++) {
-    const img = document.createElement('img');
-    img.src = `https://picsum.photos/id/${i}/200`;
-    img.classList.add('img');
-    output.appendChild(img);
-  }
+    if (isNaN(num1) || isNaN(num2)) {
+      result.innerHTML = '<div class="error">Введите число в оба поля</div>';
+      return;
+    }
+
+    if (num1 < 100 || num1 > 300 || num2 < 100 || num2 > 300) {
+      result.innerHTML = '<div class="error">Одно из чисел вне диапазона от 100 до 300</div>';
+      return;
+    }
+
+    fetch(`https://picsum.photos/${num1}/${num2}`)
+      .then(response => {
+        const img = document.createElement("img");
+        img.src = response.url;
+        result.innerHTML = "";
+        result.appendChild(img);
+      })
+      .catch(error => {
+        result.innerHTML = '<div class="error">Произошла ошибка при загрузке изображения</div>';
+      });
+  });
 });
