@@ -1,0 +1,46 @@
+
+#form{
+   margin-top:5em;
+   display: grid;
+   grid-template-columns: 100px 200px;
+   gap: 10px;
+}
+input{
+   width: 100%;
+   padding: 5px;
+   border-radius: 5px;
+   border: 2px solid gray;
+   font-size: 18px;
+}
+#request{
+   padding: 5px;
+   border-radius: 5px;
+   border: none;
+   font-size: 18px;
+   background-color: #90EE90;
+   color: white;
+   cursor: pointer;
+}
+#loading{
+   margin-top: 1em;
+   text-align: center;
+   color: blue;
+   font-size: 2em;
+   display: none;
+}
+#error{
+   margin-top: 1em;
+   text-align: center;
+   color: red;
+   font-size: 1.5em;
+   display: none;
+}
+#images{
+   margin-top: 1em;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, 200px);
+   gap:10px;
+}
+img{
+   max-width: 100%;
+}
